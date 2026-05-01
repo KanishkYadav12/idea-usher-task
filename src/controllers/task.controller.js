@@ -54,7 +54,6 @@ const invalidateUserCache = async (userId) => {
     }
   } catch (err) {
     console.error("Cache invalidation error:", err.message);
-    // Non-critical — DB will serve fresh data
   }
 };
 
