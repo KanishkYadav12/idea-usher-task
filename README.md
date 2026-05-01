@@ -83,39 +83,51 @@ npm start      # production
 | order | String | desc | asc or desc |
 
 ---
-
-## 📁 Folder Structure
+## Folder Structure
 
 ```
-src/
-├── config/
-│   ├── db.js            # MongoDB connection
-│   └── redis.js         # Upstash Redis client
+idea-usher-task/
+├── logs/
+│   ├── combined.log
+│   └── error.log
 │
-├── controllers/
-│   ├── auth.controller.js   # Register, login, profile
-│   └── task.controller.js   # CRUD + cache logic
+├── src/
+│   ├── config/
+│   │   ├── db.js              # MongoDB connection
+│   │   └── redis.js           # Upstash Redis client
+│   │
+│   ├── controllers/
+│   │   ├── auth.controller.js # Register, login, profile
+│   │   └── task.controller.js # CRUD + cache logic
+│   │
+│   ├── middleware/
+│   │   ├── auth.middleware.js # JWT verification
+│   │   ├── error.middleware.js # Centralized error handler
+│   │   └── rateLimiter.js     # Rate limiting
+│   │
+│   ├── models/
+│   │   ├── user.model.js      # User schema
+│   │   └── task.model.js      # Task schema
+│   │
+│   ├── routes/
+│   │   ├── auth.routes.js     # Auth endpoints
+│   │   └── task.routes.js     # Task endpoints
+│   │
+│   ├── utils/
+│   │   ├── ApiError.js        # Custom error class
+│   │   ├── ApiResponse.js     # Response wrapper
+│   │   └── logger.js          # Winston logger
+│   │
+│   └── app.js                 # Express app setup
 │
-├── middleware/
-│   ├── auth.middleware.js   # JWT verification
-│   ├── error.middleware.js  # Centralized error handler
-│   └── rateLimiter.js       # Rate limiting
-│
-├── models/
-│   ├── user.model.js        # User schema
-│   └── task.model.js        # Task schema
-│
-├── routes/
-│   ├── auth.routes.js       # Auth endpoints
-│   └── task.routes.js       # Task endpoints
-│
-├── utils/
-│   ├── ApiError.js          # Custom error class
-│   ├── ApiResponse.js       # Consistent response wrapper
-│   └── logger.js            # Winston logger
-│
-├── app.js                   # Express app setup
-└── server.js                # Entry point
+├── .env
+├── .env.example
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── server.js                  # Entry point
+└── task-manager-api.postman_collection.json
+```
 ```
 
 ### Why this structure?
